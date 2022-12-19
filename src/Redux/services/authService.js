@@ -2,10 +2,13 @@ import axios from 'axios';
 
 const signIn = async (email, password) => {
   try {
-    const { data } = await axios.post('/api/users/signin', {
-      email,
-      password,
-    });
+    const { data } = await axios.post(
+      `${process.env.REACT_APP_SERVER_URL}/api/users/signin`,
+      {
+        email,
+        password,
+      }
+    );
     localStorage.setItem('userInfo', JSON.stringify(data));
     return {
       payload: data,
@@ -16,11 +19,14 @@ const signIn = async (email, password) => {
 };
 const signUp = async (name, email, password) => {
   try {
-    const { data } = await axios.post('/api/users/signup', {
-      name,
-      email,
-      password,
-    });
+    const { data } = await axios.post(
+      `${process.env.REACT_APP_SERVER_URL}/api/users/signup`,
+      {
+        name,
+        email,
+        password,
+      }
+    );
     localStorage.setItem('userInfo', JSON.stringify(data));
     return {
       payload: data,
@@ -33,7 +39,7 @@ const signUp = async (name, email, password) => {
 const UpdateUser = async (name, email, password, token) => {
   try {
     const { data } = await axios.put(
-      '/api/users/profile',
+      `${process.env.REACT_APP_SERVER_URL}/api/users/profile`,
       {
         name,
         email,

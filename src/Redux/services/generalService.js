@@ -54,7 +54,7 @@ const saveMethodPayment = async (paymentMethod) => {
 const placeOrder = async (cart, token, navigate) => {
   try {
     const { data } = await axios.post(
-      '/api/orders',
+      `${process.env.REACT_APP_SERVER_URL}/api/orders`,
       {
         orderItems: cart.cartItems,
         shippingAddress: cart.shippingAddress,

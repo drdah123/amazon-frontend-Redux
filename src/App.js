@@ -55,7 +55,9 @@ function App() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const { data } = await axios.get(`/api/products/categories`);
+        const { data } = await axios.get(
+          `${process.env.REACT_APP_SERVER_URL}/api/products/categories`
+        );
         setCategories(data);
       } catch (err) {
         toast.error(getError(err));
