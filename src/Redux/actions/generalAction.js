@@ -23,7 +23,7 @@ const saveShippingAddress = (...arg) => {
           payload: saveResponse.payload,
         });
       })
-      .catch((err) => console.log(err));
+      .catch();
   };
 };
 const saveShippingAddressLocation = (location, place) => {
@@ -36,7 +36,7 @@ const saveShippingAddressLocation = (location, place) => {
           payload: saveResponse.payload,
         });
       })
-      .catch((err) => console.log(err));
+      .catch();
   };
 };
 
@@ -50,7 +50,7 @@ const saveMethodPayment = (paymentMethod) => {
           payload: paymentResponse.payload,
         });
       })
-      .catch((err) => console.log(err));
+      .catch();
   };
 };
 
@@ -63,7 +63,7 @@ const placeOrder = (...arg) => {
           type: TYPE.CART_CLEAR,
         });
       })
-      .catch((err) => console.log(err));
+      .catch();
   };
 };
 

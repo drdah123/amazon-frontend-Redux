@@ -1,7 +1,7 @@
 import { TYPE } from '../reducers/reducer';
 import authService from '../services/authService';
 
-const singIn = (email, password) => {
+const singIn = (email, password, navigate, redirect) => {
   return (dispatch) => {
     authService
       .signIn(email, password)
@@ -11,20 +11,22 @@ const singIn = (email, password) => {
           payload: authResponse.payload,
         });
       })
-      .catch((err) => console.log(err));
+      .then(() => navigate(redirect || '/'))
+      .catch();
   };
 };
-const singUp = (email, password, name) => {
+const singUp = (name, email, password, navigate, redirect) => {
   return (dispatch) => {
     authService
       .signUp(name, email, password)
       .then((authResponse) => {
         dispatch({
-          type: TYPE.USER_SIGNOUT,
+          type: TYPE.USER_SIGNIN,
           payload: authResponse.payload,
         });
       })
-      .catch((err) => console.log(err));
+      .then(() => navigate(redirect || '/'))
+      .catch();
   };
 };
 const update = (...arg) => {
@@ -37,7 +39,7 @@ const update = (...arg) => {
           payload: authResponse.payload,
         });
       })
-      .catch((err) => console.log(err));
+      .catch();
   };
 };
 

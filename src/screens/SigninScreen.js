@@ -23,12 +23,7 @@ export default function SigninScreen() {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    try {
-      dispatch(auth.singIn(email, password));
-      navigate(redirect || '/');
-    } catch (err) {
-      toast.error(getError(err));
-    }
+    dispatch(auth.singIn(email, password, navigate, redirect));
   };
 
   useEffect(() => {

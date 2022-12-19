@@ -29,12 +29,7 @@ export default function SignupScreen() {
       toast.error('Passwords do not match');
       return;
     }
-    try {
-      dispatch(authActions.singUp(name, email, password));
-      navigate(redirect || '/');
-    } catch (err) {
-      toast.error(getError(err));
-    }
+    dispatch(authActions.singUp(name, email, password, navigate, redirect));
   };
 
   useEffect(() => {

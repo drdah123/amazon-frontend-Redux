@@ -11,9 +11,7 @@ const cartAddItem = (item, existItem) => {
           payload: cartResponse.payload,
         });
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   };
 };
 
@@ -27,7 +25,7 @@ const cartRemoveItem = (item) => {
           payload: cartResponse.payload,
         });
       })
-      .catch((err) => console.log(err));
+      .catch();
   };
 };
 const cartUpdateItem = (item, quantity) => {
@@ -40,7 +38,7 @@ const cartUpdateItem = (item, quantity) => {
           payload: cartResponse.payload,
         });
       })
-      .catch((err) => console.log(err));
+      .catch();
   };
 };
 

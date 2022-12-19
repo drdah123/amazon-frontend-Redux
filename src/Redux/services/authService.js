@@ -13,9 +13,7 @@ const signIn = async (email, password) => {
     return {
       payload: data,
     };
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 };
 const signUp = async (name, email, password) => {
   try {
@@ -31,9 +29,7 @@ const signUp = async (name, email, password) => {
     return {
       payload: data,
     };
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 };
 
 const UpdateUser = async (name, email, password, token) => {

@@ -72,9 +72,7 @@ const placeOrder = async (cart, token, navigate) => {
     );
     localStorage.removeItem('cartItems');
     navigate(`/order/${data.order._id}`);
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 };
 export default {
   saveShippingAddress,
