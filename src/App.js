@@ -9,8 +9,7 @@ import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Container from 'react-bootstrap/Container';
 import { LinkContainer } from 'react-router-bootstrap';
-import { useContext, useEffect, useState } from 'react';
-import { Store } from './Store';
+import { useEffect, useState } from 'react';
 import CartScreen from './screens/CartScreen';
 import SigninScreen from './screens/SigninScreen';
 import ShippingAddressScreen from './screens/ShippingAddressScreen';
@@ -34,19 +33,18 @@ import OrderListScreen from './screens/OrderListScreen';
 import UserListScreen from './screens/UserListScreen';
 import UserEditScreen from './screens/UserEditScreen';
 import MapScreen from './screens/MapScreen';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import authActions from './Redux/actions/authActions';
 
 function App() {
-  const { state, dispatch: ctxDispatch } = useContext(Store);
-  const { fullBox } = state;
+  const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.reducer2.cart.cartItems);
   const userInfo = useSelector((state) => state.reducer2.userInfo);
+  const fullBox = useSelector((state) => state.reducer2.fullBox);
 
   const signoutHandler = () => {
-    ctxDispatch({ type: 'USER_SIGNOUT' });
-    localStorage.removeItem('userInfo');
-    localStorage.removeItem('shippingAddress');
-    localStorage.removeItem('paymentMethod');
+    dispatch(authActions.signOut());
+
     window.location.href = '/signin';
   };
   const [sidebarIsOpen, setSidebarIsOpen] = useState(false);

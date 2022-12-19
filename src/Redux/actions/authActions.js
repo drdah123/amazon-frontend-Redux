@@ -42,5 +42,10 @@ const update = (...arg) => {
       .catch();
   };
 };
+const signOut = () => {
+  return (dispatch) => {
+    authService.signOut().then(() => dispatch({ type: TYPE.USER_SIGNOUT }));
+  };
+};
 
-export default { singIn, singUp, update };
+export default { singIn, singUp, update, signOut };

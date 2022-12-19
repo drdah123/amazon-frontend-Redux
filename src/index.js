@@ -6,20 +6,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { StoreProvider, storeRedux } from './Store';
+import { storeRedux } from './Store';
 import { Provider } from 'react-redux';
 
 ReactDOM.render(
   <React.StrictMode>
-    <StoreProvider>
-      <Provider store={storeRedux}>
-        <HelmetProvider>
-          <PayPalScriptProvider deferLoading={true}>
-            <App />
-          </PayPalScriptProvider>
-        </HelmetProvider>
-      </Provider>
-    </StoreProvider>
+    <Provider store={storeRedux}>
+      <HelmetProvider>
+        <PayPalScriptProvider deferLoading={true}>
+          <App />
+        </PayPalScriptProvider>
+      </HelmetProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -51,4 +51,10 @@ const UpdateUser = async (name, email, password, token) => {
     };
   } catch (error) {}
 };
-export default { signIn, signUp, UpdateUser };
+
+const signOut = async () => {
+  localStorage.removeItem('userInfo');
+  localStorage.removeItem('shippingAddress');
+  localStorage.removeItem('paymentMethod');
+};
+export default { signIn, signUp, UpdateUser, signOut };

@@ -1,3 +1,7 @@
+const userInfo = localStorage.getItem('userInfo')
+  ? JSON.parse(localStorage.getItem('userInfo'))
+  : null;
+
 const initialState = {
   fullBox: false,
   userInfo: localStorage.getItem('userInfo')
@@ -11,9 +15,12 @@ const initialState = {
     paymentMethod: localStorage.getItem('paymentMethod')
       ? localStorage.getItem('paymentMethod')
       : '',
-    cartItems: localStorage.getItem('cartItems')
-      ? JSON.parse(localStorage.getItem('cartItems'))
-      : [],
+    cartItems:
+      userInfo === null
+        ? []
+        : localStorage.getItem('cartItems')
+        ? JSON.parse(localStorage.getItem('cartItems'))
+        : [],
   },
 };
 
